@@ -1,0 +1,575 @@
+/* فایل CSS کامل - طراحی مینیمال و واکنش‌گرا */
+:root {
+    --primary: #8b5cf6;
+    --primary-dark: #7c3aed;
+    --secondary: #10b981;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --bg: #f9fafb;
+    --card: #ffffff;
+    --border: #e5e7eb;
+    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --radius: 16px;
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Vazirmatn', 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* مدیریت صفحات */
+.screen {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* کارت شروع */
+.start-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    box-shadow: var(--shadow);
+    text-align: center;
+}
+
+.start-card h1 {
+    color: var(--primary);
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+}
+
+.input-group {
+    text-align: right;
+    margin: 28px 0;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    transition: var(--transition);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.input-group small {
+    display: block;
+    margin-top: 8px;
+    color: var(--text-light);
+    font-size: 0.85rem;
+}
+
+.quiz-info {
+    text-align: right;
+    background: #f0f9ff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 28px 0;
+}
+
+.quiz-info p {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quiz-info i {
+    color: var(--primary);
+    width: 20px;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 32px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(139, 92, 246, 0.2);
+}
+
+/* هدر آزمون */
+.quiz-header {
+    margin-bottom: 24px;
+}
+
+.progress-container {
+    height: 8px;
+    background: var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 12px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), #a78bfa);
+    border-radius: 4px;
+    width: 0%;
+    transition: width 0.4s ease;
+}
+
+.quiz-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+#categoryTag {
+    background: #e0e7ff;
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+/* کارت سوال */
+.question-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: var(--shadow);
+}
+
+#questionText {
+    font-size: 1.4rem;
+    margin-bottom: 28px;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.options-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.option {
+    padding: 18px 20px;
+    border: 2px solid var(--border);
+    background: white;
+    border-radius: 12px;
+    text-align: right;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.option:hover {
+    border-color: var(--primary);
+    background: #faf5ff;
+    transform: translateY(-2px);
+}
+
+.option.selected {
+    border-color: var(--primary);
+    background: #f5f3ff;
+    font-weight: 600;
+}
+
+.option.correct {
+    border-color: var(--secondary);
+    background: #d1fae5;
+}
+
+.option.wrong {
+    border-color: var(--danger);
+    background: #fee2e2;
+}
+
+.quiz-nav {
+    display: flex;
+    gap: 12px;
+}
+
+.nav-btn {
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid var(--border);
+    background: white;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.nav-btn:not(:disabled):hover {
+    background: #f9fafb;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, var(--secondary), #059669);
+    color: white;
+    border: none !important;
+}
+
+/* کارت نتیجه */
+.result-card {
+    background: var(--card);
+    border-radius: var(--radius);
+    padding: 0;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+
+.result-header {
+    background: linear-gradient(135deg, var(--primary), #7c3aed);
+    color: white;
+    padding: 28px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.user-avatar {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.result-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 4px;
+}
+
+.user-level {
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.score-card {
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.score-circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    background: conic-gradient(var(--primary) 0% 75%, #e5e7eb 75% 100%);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-circle::before {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+}
+
+.score-circle span {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    position: relative;
+    z-index: 1;
+}
+
+.score-circle small {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    position: relative;
+    z-index: 1;
+}
+
+.score-details {
+    flex: 1;
+}
+
+.score-details p {
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skills-breakdown {
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.skills-breakdown h4 {
+    margin-bottom: 20px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.skill {
+    margin-bottom: 20px;
+}
+
+.skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.skill-bar {
+    height: 10px;
+    background: var(--border);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), #a78bfa);
+    border-radius: 5px;
+    transition: width 1s ease;
+}
+
+.strength-label {
+    color: var(--secondary);
+    font-size: 0.85rem;
+}
+
+.weakness-label {
+    color: var(--danger);
+    font-size: 0.85rem;
+}
+
+.personal-message {
+    padding: 24px;
+    background: #f0f9ff;
+    margin: 0 24px;
+    border-radius: 12px;
+    border-right: 4px solid var(--primary);
+}
+
+.cta-box {
+    padding: 24px;
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    margin: 24px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.cta-box h5 {
+    margin-bottom: 12px;
+    color: #92400e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.cta-box p {
+    margin-bottom: 12px;
+    color: #78350f;
+}
+
+.contact-info {
+    margin: 16px 0;
+    color: #92400e;
+}
+
+.cta-button {
+    background: #f59e0b;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 28px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cta-button:hover {
+    background: #d97706;
+    transform: translateY(-2px);
+}
+
+.action-buttons {
+    padding: 0 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.action-btn {
+    padding: 16px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.retest-btn {
+    background: var(--primary);
+    color: white;
+}
+
+.share-btn {
+    background: white;
+    color: var(--text);
+    border: 2px solid var(--border) !important;
+}
+
+.site-footer {
+    text-align: center;
+    margin-top: 32px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    padding: 20px;
+}
+
+.footer-note {
+    font-size: 0.8rem;
+    margin-top: 8px;
+    opacity: 0.7;
+}
+
+/* طراحی واکنش‌گرا */
+@media (max-width: 640px) {
+    body {
+        padding: 12px;
+    }
+    
+    .start-card, .question-card {
+        padding: 24px 20px;
+    }
+    
+    .start-card h1 {
+        font-size: 1.6rem;
+    }
+    
+    #questionText {
+        font-size: 1.3rem;
+    }
+    
+    .score-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .result-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+    
+    .quiz-nav {
+        flex-direction: column;
+    }
+    
+    .cta-box, .personal-message {
+        margin: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --radius: 12px;
+    }
+    
+    .primary-btn, .nav-btn, .action-btn {
+        padding: 16px;
+    }
+    
+    .input-group input {
+        padding: 14px 16px;
+    }
+  }
