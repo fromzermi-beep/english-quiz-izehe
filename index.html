@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آزمون پیشرفته زبان انگلیسی | ایذه</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vazirmatn@33.003/font.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- بخش شروع و دریافت نام -->
+        <section id="startScreen" class="screen active">
+            <div class="start-card">
+                <h1><i class="fas fa-language"></i> آزمون سطح زبان انگلیسی</h1>
+                <p class="subtitle">ویژه جوانان ایذه‌ای | طراحی شده برای موبایل و تبلت</p>
+                
+                <div class="input-group">
+                    <label for="userName">لطفاً نام خود را وارد کنید:</label>
+                    <input type="text" id="userName" placeholder="مثال: علی" maxlength="20">
+                    <small>برای نتایج شخصی‌سازی شده</small>
+                </div>
+                
+                <div class="quiz-info">
+                    <p><i class="fas fa-question-circle"></i> <strong>۱۵ سوال تصادفی</strong> از بانک ۵۰ سوال</p>
+                    <p><i class="fas fa-chart-pie"></i> <strong>تحلیل دقیق</strong> نقاط قوت و ضعف</p>
+                    <p><i class="fas fa-graduation-cap"></i> <strong>پیشنهاد اختصاصی</strong> برای پیشرفت</p>
+                </div>
+                
+                <button id="startBtn" class="primary-btn">
+                    شروع آزمون <i class="fas fa-arrow-left"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- بخش سوالات آزمون -->
+        <section id="quizScreen" class="screen">
+            <div class="quiz-header">
+                <div class="progress-container">
+                    <div class="progress-bar" id="progressBar"></div>
+                </div>
+                <div class="quiz-meta">
+                    <span id="questionCounter">سوال ۱ از ۱۵</span>
+                    <span id="categoryTag">گرامر</span>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <h2 id="questionText">متن سوال اینجا نمایش داده می‌شود.</h2>
+                
+                <div class="options-container" id="optionsContainer">
+                    <!-- گزینه‌ها توسط جاوااسکریپت ساخته می‌شوند -->
+                </div>
+                
+                <div class="quiz-nav">
+                    <button id="prevBtn" class="nav-btn" disabled>
+                        <i class="fas fa-arrow-right"></i> قبلی
+                    </button>
+                    <button id="nextBtn" class="nav-btn primary-btn">
+                        بعدی <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button id="submitBtn" class="nav-btn submit-btn" style="display: none;">
+                        <i class="fas fa-paper-plane"></i> مشاهده نتیجه
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش نتایج -->
+        <section id="resultScreen" class="screen">
+            <div class="result-card">
+                <!-- هدر شخصی‌سازی شده -->
+                <div class="result-header" id="resultHeader">
+                    <div class="user-avatar" id="userAvatar">A</div>
+                    <div>
+                        <h3 id="personalGreeting">علی جان، نتیجه آزمونت اینه! 🎯</h3>
+                        <p class="user-level">سطح کلی: <strong id="overallLevel">متوسط (B1)</strong></p>
+                    </div>
+                </div>
+                
+                <!-- کارت امتیاز -->
+                <div class="score-card">
+                    <div class="score-circle">
+                        <span id="finalScore">۷۵</span>
+                        <small>از ۱۰۰</small>
+                    </div>
+                    <div class="score-details">
+                        <p><i class="fas fa-check-circle"></i> پاسخ صحیح: <strong id="correctCount">۱۱</strong> از ۱۵</p>
+                        <p><i class="fas fa-clock"></i> زمان تخمینی: <strong>۵ دقیقه</strong></p>
+                    </div>
+                </div>
+                
+                <!-- تحلیل مهارت‌ها -->
+                <div class="skills-breakdown">
+                    <h4><i class="fas fa-chart-bar"></i> تحلیل نقطه‌قوت و ضعفت:</h4>
+                    <div class="skill" id="grammarSkill">
+                        <div class="skill-info">
+                            <span>گرامر</span>
+                            <span>۷۵٪</span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
+                    </div>
+                    <div class="skill" id="vocabSkill">
+                        <div class="skill-info">
+                            <span>دایره واژگان</span>
+                            <span>۹۰٪ <span class="strength-label">← آفرین!</span></span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 90%"></div></div>
+                    </div>
+                    <div class="skill" id="comprehensionSkill">
+                        <div class="skill-info">
+                            <span>درک مطلب</span>
+                            <span>۵۰٪ <span class="weakness-label">← نیاز به تمرین</span></span>
+                        </div>
+                        <div class="skill-bar"><div class="skill-fill" style="width: 50%"></div></div>
+                    </div>
+                </div>
+                
+                <!-- پیام شخصی‌شده -->
+                <div class="personal-message">
+                    <p id="personalizedMessage">علی جان، دایره لغاتت عالیه! برای پیشرفت بیشتر، تمرکز رو روی <strong>درک متون انگلیسی</strong> بذار.</p>
+                </div>
+                
+                <!-- دعوت به اقدام (CTA) - قسمت قابل تنظیم شما -->
+                <div class="cta-box">
+                    <h5><i class="fas fa-graduation-cap"></i> قدم بعدی برای پیشرفت:</h5>
+                    <p>کلاس‌های ویژه تقویت زبان در <strong class="academy-name">[نام آموزشگاه شما] ایذه</strong> می‌تونه کمکت کنه.</p>
+                    <p class="contact-info"><i class="fas fa-phone"></i> تماس: <strong class="academy-phone">[شماره تلفن آموزشگاه]</strong></p>
+                    <div class="cta-actions">
+                        <button class="cta-button" onclick="window.open('tel:' + document.querySelector('.academy-phone').innerText)">
+                            <i class="fas fa-phone-alt"></i> تماس برای مشاوره
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- دکمه‌های اقدام نهایی -->
+                <div class="action-buttons">
+                    <button id="retestBtn" class="action-btn retest-btn">
+                        <i class="fas fa-redo"></i> آزمون مجدد (سوالات جدید)
+                    </button>
+                    <button id="shareBtn" class="action-btn share-btn">
+                        <i class="fas fa-share-alt"></i> اشتراک‌گذاری نتیجه
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <footer class="site-footer">
+            <p>© ۱۴۰۳ - طراحی شده با <i class="fas fa-heart" style="color:#e74c3c;"></i> برای مردم ایذه</p>
+            <p class="footer-note">نتایج این آزمون جنبه اطلاع‌رسانی دارد و جایگزین آزمون‌های استاندارد نمی‌شود.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
